@@ -1,11 +1,15 @@
-
-import './App.css';
+import React from "react";
+import Navbar from "./components/Navbar";
+import Home from "./screens/Home";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="fs-1">
-      <h1>Welcome to Foodie!</h1>
-    </div>
+    <>
+      <Navbar />
+      <Home />
+      <Footer />
+    </>
   );
 }
 
