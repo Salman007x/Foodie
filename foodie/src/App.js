@@ -1,15 +1,17 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import Home from "./screens/Home";
-import Footer from "./components/Footer";
-
+import Login from "./screens/Login";
+import{ BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   return (
-    <>
-      <Navbar />
-      <Home />
-      <Footer />
-    </>
+    <Router>
+      <div>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
