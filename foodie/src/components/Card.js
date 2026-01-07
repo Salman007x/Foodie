@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Card({ image, title, description, price }) {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   const foodImages = [
     'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop',
     'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
@@ -44,6 +56,42 @@ export default function Card({ image, title, description, price }) {
           <p style={{ color: '#a0a0b0', fontSize: '14px', marginBottom: '1rem' }}>
             {defaultDescription}
           </p>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem', gap: '0.5rem' }}>
+            <span style={{ color: '#ffffff', fontSize: '14px', fontWeight: '500' }}>Quantity:</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#2d2d44', borderRadius: '8px', padding: '0.25rem 0.5rem' }}>
+              <button 
+                onClick={handleDecrement}
+                style={{
+                  background: 'transparent',
+                  color: '#667eea',
+                  border: 'none',
+                  fontSize: '18px',
+                  fontWeight: '700',
+                  cursor: 'pointer',
+                  padding: '0 0.5rem',
+                  transition: 'color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#764ba2'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#667eea'}
+              >-</button>
+              <span style={{ color: '#ffffff', fontWeight: '600', minWidth: '20px', textAlign: 'center' }}>{quantity}</span>
+              <button 
+                onClick={handleIncrement}
+                style={{
+                  background: 'transparent',
+                  color: '#667eea',
+                  border: 'none',
+                  fontSize: '18px',
+                  fontWeight: '700',
+                  cursor: 'pointer',
+                  padding: '0 0.5rem',
+                  transition: 'color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#764ba2'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#667eea'}
+              >+</button>
+            </div>
+          </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ color: '#667eea', fontWeight: '700', fontSize: '20px' }}>{defaultPrice}</span>
             <button style={{
