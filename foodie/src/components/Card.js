@@ -1,26 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 export default function Card({ image, title, description, price }) {
   const [quantity, setQuantity] = useState(1);
 
-  const handleIncrement = () => {
-    setQuantity(quantity + 1);
-  };
+  const handleIncrement = useCallback(() => {
+    setQuantity(prev => prev + 1);
+  }, []);
 
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const foodImages = [
-    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=300&fit=crop'
-  ];
+  const handleDecrement = useCallback(() => {
+    setQuantity(prev => prev > 1 ? prev - 1 : prev);
+  }, []);
   
-  const defaultImage = image || foodImages[Math.floor(Math.random() * foodImages.length)];
+  const defaultImage = image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop';
   const defaultTitle = title || 'Delicious Meal';
   const defaultDescription = description || 'A perfect blend of flavors to satisfy your taste buds.';
   const defaultPrice = price || '$12.99';
@@ -113,3 +105,10 @@ export default function Card({ image, title, description, price }) {
     </div>
   )
 }
+
+Card.propTypes = {
+  image: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.string
+};
