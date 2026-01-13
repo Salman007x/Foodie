@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/package-lock.json
 
 # testing
 /coverage
@@ -21,3 +22,19 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Competitive Programming Helper
+.cph/
+*.prob
+
+# OS files
+Thumbs.db
+Desktop.ini
