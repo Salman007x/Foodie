@@ -1,10 +1,13 @@
 import React, { Suspense, lazy, Component } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import { CartProvider } from "./context/CartContext";
 
 // Lazy load components for better performance
 const Home = lazy(() => import("./screens/Home"));
 const Login = lazy(() => import("./screens/Login"));
+const Menu = lazy(() => import("./screens/Menu"));
+const About = lazy(() => import("./screens/About"));
 
 // Error Boundary Component for better error handling
 class ErrorBoundary extends Component {
@@ -96,18 +99,22 @@ const LoadingFallback = () => (
 function App() {
   return (
     <ErrorBoundary>
-      <Router>
-        <div className="app-container">
-          <Suspense fallback={<LoadingFallback />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              {/* 404 Route - catch all undefined routes */}
-              <Route path="*" element={<Home />} />
-            </Routes>
-          </Suspense>
-        </div>
-      </Router>
+      <CartProvider>
+        <Router>
+          <div className="app-container">
+            <Suspense fallback={<LoadingFallback />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/about" element={<About />} />
+                {/* 404 Route - catch all undefined routes */}
+                <Route path="*" element={<Home />} />
+              </Routes>
+            </Suspense>
+          </div>
+        </Router>
+      </CartProvider>
     </ErrorBoundary>
   );
 }

@@ -19,7 +19,7 @@ export default function Card({ image, title, description, price }) {
 
   return (
     <div>
-      <div className="card" style={{
+      <article className="card" role="article" aria-label={`${defaultTitle} menu item`} style={{
         width: "18rem",
         background: '#1a1a2e',
         border: '1px solid #2d2d44',
@@ -40,8 +40,9 @@ export default function Card({ image, title, description, price }) {
         <img 
           src={defaultImage} 
           className="card-img-top" 
-          alt={defaultTitle}
+          alt={`${defaultTitle} - ${defaultDescription}`}
           style={{ height: '200px', objectFit: 'cover' }}
+          loading="lazy"
         />
         <div className="card-body" style={{ padding: '1.25rem' }}>
           <h5 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '0.5rem' }}>{defaultTitle}</h5>
@@ -50,25 +51,28 @@ export default function Card({ image, title, description, price }) {
           </p>
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem', gap: '0.5rem' }}>
             <span style={{ color: '#ffffff', fontSize: '14px', fontWeight: '500' }}>Quantity:</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#2d2d44', borderRadius: '8px', padding: '0.25rem 0.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#2d2d44', borderRadius: '8px', padding: '0.25rem 0.5rem' }} role="group" aria-label="Quantity selector">
               <button 
                 onClick={handleDecrement}
+                aria-label={`Decrease quantity, current quantity is ${quantity}`}
+                disabled={quantity <= 1}
                 style={{
                   background: 'transparent',
-                  color: '#667eea',
+                  color: quantity <= 1 ? '#444' : '#667eea',
                   border: 'none',
                   fontSize: '18px',
                   fontWeight: '700',
-                  cursor: 'pointer',
+                  cursor: quantity <= 1 ? 'not-allowed' : 'pointer',
                   padding: '0 0.5rem',
                   transition: 'color 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#764ba2'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#667eea'}
+                onMouseEnter={(e) => quantity > 1 && (e.currentTarget.style.color = '#764ba2')}
+                onMouseLeave={(e) => quantity > 1 && (e.currentTarget.style.color = '#667eea')}
               >-</button>
-              <span style={{ color: '#ffffff', fontWeight: '600', minWidth: '20px', textAlign: 'center' }}>{quantity}</span>
+              <span style={{ color: '#ffffff', fontWeight: '600', minWidth: '20px', textAlign: 'center' }} aria-live="polite" aria-atomic="true">{quantity}</span>
               <button 
                 onClick={handleIncrement}
+                aria-label={`Increase quantity, current quantity is ${quantity}`}
                 style={{
                   background: 'transparent',
                   color: '#667eea',
@@ -85,19 +89,21 @@ export default function Card({ image, title, description, price }) {
             </div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ color: '#667eea', fontWeight: '700', fontSize: '20px' }}>{defaultPrice}</span>
-            <button style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: 'white',
-              border: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '8px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'transform 0.2s ease'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+            <span style={{ color: '#667eea', fontWeight: '700', fontSize: '20px' }} aria-label={`Price: ${defaultPrice}`}>{defaultPrice}</span>
+            <button 
+              aria-label={`Add ${quantity} ${defaultTitle} to cart for ${defaultPrice}`}
+              style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                border: 'none',
+                padding: '0.5rem 1rem',
+                borderRadius: '8px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'transform 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >Order Now</button>
           </div>
         </div>

@@ -1,0 +1,67 @@
+// Sample menu data
+export const MENU_ITEMS = [
+  {
+    id: 1,
+    title: 'Classic Burger',
+    description: 'Juicy beef patty with fresh lettuce, tomatoes, and special sauce',
+    price: '$12.99',
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop',
+    category: 'Burgers',
+    rating: 4.5,
+  },
+  {
+    id: 2,
+    title: 'Margherita Pizza',
+    description: 'Fresh mozzarella, basil, and tomato sauce on crispy crust',
+    price: '$15.99',
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop',
+    category: 'Pizza',
+    rating: 4.8,
+  },
+  {
+    id: 3,
+    title: 'Caesar Salad',
+    description: 'Crisp romaine lettuce with parmesan and croutons',
+    price: '$9.99',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
+    category: 'Salads',
+    rating: 4.3,
+  },
+  {
+    id: 4,
+    title: 'Sushi Platter',
+    description: 'Assorted fresh sushi with wasabi and soy sauce',
+    price: '$24.99',
+    image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop',
+    category: 'Asian',
+    rating: 4.9,
+  },
+  {
+    id: 5,
+    title: 'Chicken Tacos',
+    description: 'Grilled chicken with fresh salsa and guacamole',
+    price: '$11.99',
+    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=300&fit=crop',
+    category: 'Mexican',
+    rating: 4.6,
+  },
+  {
+    id: 6,
+    title: 'Pasta Carbonara',
+    description: 'Creamy pasta with bacon and parmesan cheese',
+    price: '$14.99',
+    image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&h=300&fit=crop',
+    category: 'Italian',
+    rating: 4.7,
+  },
+];
+
+export const CATEGORIES = [
+  'All',
+  'Burgers',
+  'Pizza',
+  'Salads',
+  'Asian',
+  'Mexican',
+  'Italian',
+];
