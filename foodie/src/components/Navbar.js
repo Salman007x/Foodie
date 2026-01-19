@@ -31,17 +31,47 @@ export default function Navbar() {
             <Link className="nav-link active" to="/" role="menuitem" aria-current="page" style={{
               fontSize: '16px',
               fontWeight: '500',
-              padding: '0.5rem 1rem'
+              padding: '0.5rem 1rem',
+              transition: 'all 0.3s ease',
+              borderRadius: '8px'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}>Home</Link>
             <Link className="nav-link" to="/login" role="menuitem" style={{
               fontSize: '16px',
               fontWeight: '500',
-              padding: '0.5rem 1rem'
+              padding: '0.5rem 1rem',
+              transition: 'all 0.3s ease',
+              borderRadius: '8px'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}>Login</Link>
             <Link className="nav-link" to="/menu" role="menuitem" style={{
               fontSize: '16px',
               fontWeight: '500',
-              padding: '0.5rem 1rem'
+              padding: '0.5rem 1rem',
+              transition: 'all 0.3s ease',
+              borderRadius: '8px'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}>Menu</Link>
           </div>
         </div>
