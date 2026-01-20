@@ -73,6 +73,21 @@ export default function Navbar() {
               e.currentTarget.style.backgroundColor = 'transparent';
               e.currentTarget.style.transform = 'translateY(0)';
             }}>Menu</Link>
+            <Link className="nav-link" to="/about" role="menuitem" style={{
+              fontSize: '16px',
+              fontWeight: '500',
+              padding: '0.5rem 1rem',
+              transition: 'all 0.3s ease',
+              borderRadius: '8px'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}>About</Link>
           </div>
         </div>
       </div>
