@@ -30,11 +30,11 @@ export default function Card({ image, title, description, price }) {
         cursor: 'pointer'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
-        e.currentTarget.style.boxShadow = '0 15px 35px rgba(102, 126, 234, 0.5)';
+        e.currentTarget.style.transform = 'translateY(-10px) scale(1.03) rotate(1deg)';
+        e.currentTarget.style.boxShadow = '0 20px 40px rgba(102, 126, 234, 0.6)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+        e.currentTarget.style.transform = 'translateY(0) scale(1) rotate(0deg)';
         e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4)';
       }}>
         <img 
