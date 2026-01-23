@@ -103,24 +103,61 @@ export default function Login() {
         .login-container {
           min-height: 100vh;
           background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+          background-size: 400% 400%;
+          animation: gradientFlow 15s ease infinite;
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 20px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .login-container::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          right: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+          animation: rotate 30s linear infinite;
+        }
+
+        @keyframes gradientFlow {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        @keyframes rotate {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
 
         .login-wrapper {
           width: 100%;
           max-width: 450px;
+          position: relative;
+          z-index: 1;
         }
 
         .login-card {
-          background: #1a1a2e;
-          border-radius: 20px;
+          background: rgba(26, 26, 46, 0.7);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-radius: 30px;
           padding: 40px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-          border: 1px solid #2d2d44;
-          animation: slideUp 0.5s ease-out;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(102, 126, 234, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          animation: slideUp 0.5s ease-out, float 6s ease-in-out infinite;
         }
 
         @keyframes slideUp {
@@ -134,6 +171,15 @@ export default function Login() {
           }
         }
 
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
         .login-header {
           text-align: center;
           margin-bottom: 35px;
@@ -142,8 +188,21 @@ export default function Login() {
         .login-title {
           font-size: 32px;
           font-weight: 700;
-          color: #ffffff;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin-bottom: 10px;
+          animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
         }
 
         .login-subtitle {
@@ -158,6 +217,7 @@ export default function Login() {
 
         .form-group {
           margin-bottom: 25px;
+          position: relative;
         }
 
         .form-label {
@@ -166,6 +226,7 @@ export default function Login() {
           color: #e0e0e0;
           font-weight: 600;
           font-size: 14px;
+          transition: all 0.3s ease;
         }
 
         .form-label i {
@@ -176,19 +237,21 @@ export default function Login() {
         .form-input {
           width: 100%;
           padding: 12px 15px;
-          border: 2px solid #2d2d44;
-          border-radius: 10px;
+          border: 2px solid rgba(45, 45, 68, 0.8);
+          border-radius: 15px;
           font-size: 15px;
-          background: #16213e;
+          background: rgba(22, 33, 62, 0.6);
           color: #ffffff;
           transition: all 0.3s ease;
+          backdrop-filter: blur(10px);
         }
 
         .form-input:focus {
           border-color: #667eea;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2), 0 0 20px rgba(102, 126, 234, 0.1);
           outline: none;
-          background: #1a2540;
+          background: rgba(26, 37, 64, 0.7);
+          transform: translateY(-2px);
         }
 
         .form-input::placeholder {
@@ -212,11 +275,27 @@ export default function Login() {
           color: #667eea;
           text-decoration: none;
           font-weight: 600;
+          position: relative;
+          transition: all 0.3s ease;
+        }
+
+        .forgot-link::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -2px;
+          left: 0;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          transition: width 0.3s ease;
         }
 
         .forgot-link:hover {
-          text-decoration: underline;
           color: #8094f7;
+        }
+
+        .forgot-link:hover::after {
+          width: 100%;
         }
 
         .btn-login {
@@ -225,16 +304,36 @@ export default function Login() {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
           border: none;
-          border-radius: 10px;
+          border-radius: 15px;
           font-size: 16px;
           font-weight: 600;
           cursor: pointer;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .btn-login::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.2);
+          transform: translate(-50%, -50%);
+          transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-login:hover::before {
+          width: 300px;
+          height: 300px;
         }
 
         .btn-login:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+          transform: translateY(-3px);
+          box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
         }
 
         .divider {
@@ -250,7 +349,7 @@ export default function Login() {
           top: 50%;
           width: 45%;
           height: 1px;
-          background: #2d2d44;
+          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
         }
 
         .divider::before {
@@ -262,7 +361,8 @@ export default function Login() {
         }
 
         .divider span {
-          background: #1a1a2e;
+          background: rgba(26, 26, 46, 0.7);
+          backdrop-filter: blur(10px);
           padding: 0 15px;
           color: #6b6b7a;
           font-size: 14px;
@@ -278,7 +378,7 @@ export default function Login() {
         .btn-social {
           width: 100%;
           padding: 12px;
-          border-radius: 10px;
+          border-radius: 15px;
           font-size: 15px;
           font-weight: 600;
           cursor: pointer;
@@ -287,27 +387,53 @@ export default function Login() {
           align-items: center;
           justify-content: center;
           gap: 10px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .btn-social::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.1);
+          transform: translate(-50%, -50%);
+          transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-social:hover::before {
+          width: 300px;
+          height: 300px;
         }
 
         .btn-google {
-          background: #2d2d44;
-          border: 2px solid #3d3d54;
+          background: rgba(45, 45, 68, 0.6);
+          backdrop-filter: blur(10px);
+          border: 2px solid rgba(102, 126, 234, 0.3);
           color: #ffffff;
         }
 
         .btn-google:hover {
-          background: #3d3d54;
+          background: rgba(61, 61, 84, 0.7);
           border-color: #667eea;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
         .btn-facebook {
-          background: #1877f2;
-          border: 2px solid #1877f2;
+          background: rgba(24, 119, 242, 0.8);
+          backdrop-filter: blur(10px);
+          border: 2px solid rgba(24, 119, 242, 0.5);
           color: white;
         }
 
         .btn-facebook:hover {
-          background: #145dbf;
+          background: rgba(20, 93, 191, 0.9);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
         }
 
         .signup-link {
@@ -320,11 +446,27 @@ export default function Login() {
           color: #667eea;
           text-decoration: none;
           font-weight: 600;
+          position: relative;
+          transition: all 0.3s ease;
+        }
+
+        .link-primary::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -2px;
+          left: 0;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          transition: width 0.3s ease;
         }
 
         .link-primary:hover {
-          text-decoration: underline;
           color: #8094f7;
+        }
+
+        .link-primary:hover::after {
+          width: 100%;
         }
 
         @media (max-width: 576px) {

@@ -69,28 +69,93 @@ export default function Home() {
         
         {/* Hero Section */}
         <div className="container text-center" style={{ paddingTop: '5rem', paddingBottom: '3rem' }}>
-          <h1 style={{
-            color: '#ffffff',
-            fontWeight: '800',
-            fontSize: '3.5rem',
-            marginBottom: '1rem',
-            textShadow: '0 4px 10px rgba(0, 0, 0, 0.5)',
-            animation: 'fadeInDown 1s ease-out'
+          {/* Glassmorphism Hero Card */}
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.08)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            borderRadius: '30px',
+            padding: '3rem 2rem',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
+            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+            marginBottom: '2rem',
+            animation: 'scaleIn 0.8s ease-out'
           }}>
-            Welcome to Foodie Paradise 🍕
-          </h1>
-          <p style={{
-            color: '#f0f0f0',
-            fontSize: '1.3rem',
-            marginBottom: '2.5rem',
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
-            animation: 'fadeInUp 1s ease-out 0.3s both'
-          }}>
-            Discover amazing dishes crafted with passion and love
-          </p>
+            <h1 style={{
+              color: '#ffffff',
+              fontWeight: '800',
+              fontSize: '3.5rem',
+              marginBottom: '1rem',
+              textShadow: '0 4px 10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(102, 126, 234, 0.4)',
+              animation: 'fadeInDown 1s ease-out'
+            }}>
+              Welcome to Foodie Paradise 🍕
+            </h1>
+            <p style={{
+              color: '#f0f0f0',
+              fontSize: '1.3rem',
+              marginBottom: '2rem',
+              textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
+              animation: 'fadeInUp 1s ease-out 0.3s both'
+            }}>
+              Discover amazing dishes crafted with passion and love
+            </p>
+            
+            {/* CTA Buttons */}
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <button style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                border: 'none',
+                padding: '1rem 2.5rem',
+                borderRadius: '50px',
+                fontSize: '1.1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                boxShadow: '0 8px 20px rgba(102, 126, 234, 0.4)',
+                transition: 'all 0.3s ease',
+                animation: 'fadeInUp 1s ease-out 0.5s both'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
+                e.currentTarget.style.boxShadow = '0 12px 30px rgba(102, 126, 234, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(102, 126, 234, 0.4)';
+              }}>
+                Order Now
+              </button>
+              <button style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)',
+                color: 'white',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
+                padding: '1rem 2.5rem',
+                borderRadius: '50px',
+                fontSize: '1.1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                animation: 'fadeInUp 1s ease-out 0.6s both'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+              }}>
+                View Menu
+              </button>
+            </div>
+          </div>
           
           {/* Slide Indicators */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '3rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '0' }}>
             {foodBackgrounds.map((_, index) => (
               <div
                 key={index}
@@ -99,9 +164,22 @@ export default function Home() {
                   width: currentSlide === index ? '40px' : '10px',
                   height: '10px',
                   borderRadius: '5px',
-                  background: currentSlide === index ? '#667eea' : 'rgba(255, 255, 255, 0.4)',
+                  background: currentSlide === index 
+                    ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' 
+                    : 'rgba(255, 255, 255, 0.4)',
                   cursor: 'pointer',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  boxShadow: currentSlide === index ? '0 0 15px rgba(102, 126, 234, 0.6)' : 'none'
+                }}
+                onMouseEnter={(e) => {
+                  if (currentSlide !== index) {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.6)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (currentSlide !== index) {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.4)';
+                  }
                 }}
               />
             ))}
@@ -109,42 +187,56 @@ export default function Home() {
         </div>
 
         {/* Featured Menu Section */}
-        <div className="container" style={{ paddingBottom: '4rem' }}>
-          <h2 style={{
-            color: '#ffffff',
-            fontWeight: '700',
-            fontSize: '2.5rem',
-            marginBottom: '2rem',
-            textAlign: 'center',
-            textShadow: '0 2px 6px rgba(0, 0, 0, 0.5)'
+        <div className="container" style={{ paddingBottom: '4rem', paddingTop: '3rem' }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            backdropFilter: 'blur(15px)',
+            WebkitBackdropFilter: 'blur(15px)',
+            borderRadius: '25px',
+            padding: '3rem 2rem',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)'
           }}>
-            Featured Menu
-          </h2>
-          <div className="d-flex justify-content-center gap-4 flex-wrap">
-            <Card 
-              image="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop"
-              title="Margherita Pizza"
-              description="Classic Italian pizza with fresh mozzarella and basil."
-              price="$14.99"
-            />
-            <Card 
-              image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"
-              title="Gourmet Salad"
-              description="Fresh greens with seasonal vegetables and dressing."
-              price="$10.99"
-            />
-            <Card 
-              image="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop"
-              title="Cheeseburger"
-              description="Juicy beef patty with melted cheese and fresh toppings."
-              price="$12.99"
-            />
-            <Card 
-              image="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=300&fit=crop"
-              title="Fresh Fruits Bowl"
-              description="A healthy mix of seasonal fresh fruits."
-              price="$8.99"
-            />
+            <h2 style={{
+              color: '#ffffff',
+              fontWeight: '700',
+              fontSize: '2.5rem',
+              marginBottom: '2.5rem',
+              textAlign: 'center',
+              textShadow: '0 2px 6px rgba(0, 0, 0, 0.5)',
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              ✨ Featured Menu ✨
+            </h2>
+            <div className="d-flex justify-content-center gap-4 flex-wrap">
+              <Card 
+                image="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop"
+                title="Margherita Pizza"
+                description="Classic Italian pizza with fresh mozzarella and basil."
+                price="$14.99"
+              />
+              <Card 
+                image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"
+                title="Gourmet Salad"
+                description="Fresh greens with seasonal vegetables and dressing."
+                price="$10.99"
+              />
+              <Card 
+                image="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop"
+                title="Cheeseburger"
+                description="Juicy beef patty with melted cheese and fresh toppings."
+                price="$12.99"
+              />
+              <Card 
+                image="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=300&fit=crop"
+                title="Fresh Fruits Bowl"
+                description="A healthy mix of seasonal fresh fruits."
+                price="$8.99"
+              />
+            </div>
           </div>
         </div>
 
@@ -181,6 +273,17 @@ export default function Home() {
           }
           100% {
             transform: scale(1.1);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            transform: scale(0.8);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
           }
         }
       `}</style>
