@@ -6,22 +6,26 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark" role="navigation" aria-label="Main navigation" style={{
       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
-      padding: '1rem 0',
+      boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(102, 126, 234, 0.3)',
+      padding: '1.2rem 0',
       position: 'sticky',
       top: 0,
-      zIndex: 1000
+      zIndex: 1000,
+      backdropFilter: 'blur(10px)'
     }}>
       <div className="container-fluid">
         <Link className="navbar-brand" to="/" aria-label="Foodie home" style={{
-          fontSize: '24px',
-          fontWeight: '700',
-          textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+          fontSize: '28px',
+          fontWeight: '800',
+          textShadow: '0 3px 6px rgba(0, 0, 0, 0.3)',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.5rem'
-        }}>
-          <span style={{ fontSize: '28px' }}>🍔</span>
+          gap: '0.5rem',
+          transition: 'transform 0.3s ease'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+          <span style={{ fontSize: '32px' }}>🍔</span>
           <span>Foodie</span>
         </Link>
 
@@ -102,25 +106,28 @@ export default function Navbar() {
             
             <div style={{ position: 'relative', marginLeft: '1rem' }}>
               <button style={{
-                background: 'rgba(255, 255, 255, 0.2)',
-                border: 'none',
+                background: 'rgba(255, 255, 255, 0.25)',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
                 borderRadius: '50%',
-                width: '40px',
-                height: '40px',
+                width: '45px',
+                height: '45px',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '20px'
+                fontSize: '22px',
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
-                e.currentTarget.style.transform = 'scale(1.1)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.35)';
+                e.currentTarget.style.transform = 'scale(1.15) rotate(10deg)';
+                e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.3)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)';
+                e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                e.currentTarget.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
               }}
               aria-label={`Shopping cart with ${cartCount} items`}>
                 🛒

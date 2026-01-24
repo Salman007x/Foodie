@@ -21,21 +21,21 @@ export default function Card({ image, title, description, price }) {
     <div>
       <article className="card" role="article" aria-label={`${defaultTitle} menu item`} style={{
         width: "18rem",
-        background: '#1a1a2e',
-        border: '1px solid #2d2d44',
-        borderRadius: '15px',
+        background: 'linear-gradient(145deg, #1f1f3a 0%, #16162b 100%)',
+        border: '1px solid rgba(102, 126, 234, 0.3)',
+        borderRadius: '20px',
         overflow: 'hidden',
-        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4)',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(102, 126, 234, 0.2)',
+        transition: 'transform 0.4s ease, box-shadow 0.4s ease',
         cursor: 'pointer'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-10px) scale(1.03) rotate(1deg)';
-        e.currentTarget.style.boxShadow = '0 20px 40px rgba(102, 126, 234, 0.6)';
+        e.currentTarget.style.transform = 'translateY(-12px) scale(1.04)';
+        e.currentTarget.style.boxShadow = '0 25px 50px rgba(102, 126, 234, 0.4), 0 0 40px rgba(102, 126, 234, 0.3)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0) scale(1) rotate(0deg)';
-        e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4)';
+        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(102, 126, 234, 0.2)';
       }}>
         <img 
           src={defaultImage} 
@@ -44,9 +44,9 @@ export default function Card({ image, title, description, price }) {
           style={{ height: '200px', objectFit: 'cover' }}
           loading="lazy"
         />
-        <div className="card-body" style={{ padding: '1.25rem' }}>
-          <h5 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '0.5rem' }}>{defaultTitle}</h5>
-          <p style={{ color: '#a0a0b0', fontSize: '14px', marginBottom: '1rem' }}>
+        <div className="card-body" style={{ padding: '1.5rem' }}>
+          <h5 style={{ color: '#ffffff', fontWeight: '700', marginBottom: '0.75rem', fontSize: '1.25rem' }}>{defaultTitle}</h5>
+          <p style={{ color: '#b0b0c0', fontSize: '14px', marginBottom: '1.25rem', lineHeight: '1.5' }}>
             {defaultDescription}
           </p>
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem', gap: '0.5rem' }}>
@@ -96,14 +96,22 @@ export default function Card({ image, title, description, price }) {
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                 color: 'white',
                 border: 'none',
-                padding: '0.5rem 1rem',
-                borderRadius: '8px',
-                fontWeight: '600',
+                padding: '0.65rem 1.5rem',
+                borderRadius: '10px',
+                fontWeight: '700',
+                fontSize: '0.95rem',
                 cursor: 'pointer',
-                transition: 'transform 0.2s ease'
+                boxShadow: '0 4px 15px rgba(102, 126, 234, 0.4)',
+                transition: 'all 0.3s ease'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.08)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+              }}
             >Order Now</button>
           </div>
         </div>

@@ -84,21 +84,24 @@ export default function Home() {
             <h1 style={{
               color: '#ffffff',
               fontWeight: '800',
-              fontSize: '3.5rem',
-              marginBottom: '1rem',
-              textShadow: '0 4px 10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(102, 126, 234, 0.4)',
-              animation: 'fadeInDown 1s ease-out'
+              fontSize: '3.8rem',
+              marginBottom: '1.5rem',
+              textShadow: '0 4px 15px rgba(0, 0, 0, 0.6), 0 0 40px rgba(102, 126, 234, 0.5)',
+              animation: 'fadeInDown 1s ease-out',
+              letterSpacing: '1px'
             }}>
-              Welcome to Foodie Paradise 🍕
+              🍕 Welcome to Foodie Paradise 🍔
             </h1>
             <p style={{
               color: '#f0f0f0',
-              fontSize: '1.3rem',
-              marginBottom: '2rem',
-              textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
-              animation: 'fadeInUp 1s ease-out 0.3s both'
+              fontSize: '1.4rem',
+              marginBottom: '2.5rem',
+              textShadow: '0 2px 6px rgba(0, 0, 0, 0.5)',
+              animation: 'fadeInUp 1s ease-out 0.3s both',
+              fontWeight: '300',
+              lineHeight: '1.6'
             }}>
-              Discover amazing dishes crafted with passion and love
+              🌟 Discover Amazing Dishes Crafted with Passion and Love 🌟
             </p>
             
             {/* CTA Buttons */}
@@ -199,17 +202,14 @@ export default function Home() {
           }}>
             <h2 style={{
               color: '#ffffff',
-              fontWeight: '700',
-              fontSize: '2.5rem',
-              marginBottom: '2.5rem',
+              fontWeight: '800',
+              fontSize: '3rem',
+              marginBottom: '3rem',
               textAlign: 'center',
-              textShadow: '0 2px 6px rgba(0, 0, 0, 0.5)',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              textShadow: '0 4px 15px rgba(0, 0, 0, 0.4)',
+              letterSpacing: '2px'
             }}>
-              ✨ Featured Menu ✨
+              ✨ Our Featured Menu ✨
             </h2>
             <div className="d-flex justify-content-center gap-4 flex-wrap">
               <Card 
