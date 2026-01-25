@@ -38,26 +38,42 @@ class ErrorBoundary extends Component {
           padding: '20px',
           textAlign: 'center'
         }}>
-          <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Oops! Something went wrong</h1>
-          <p style={{ fontSize: '1rem', marginBottom: '1.5rem' }}>We're sorry for the inconvenience</p>
+          <div style={{ fontSize: '5rem', marginBottom: '1rem', animation: 'shake 0.5s ease-in-out' }}>😰</div>
+          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 'bold' }}>Oops! Something went wrong</h1>
+          <p style={{ fontSize: '1.1rem', marginBottom: '0.5rem', opacity: 0.9 }}>We're sorry for the inconvenience</p>
+          <p style={{ fontSize: '0.9rem', marginBottom: '2rem', opacity: 0.7 }}>Don't worry, your cart is safe!</p>
           <button 
             onClick={() => window.location.href = '/'}
             style={{
-              padding: '12px 24px',
-              fontSize: '1rem',
+              padding: '14px 32px',
+              fontSize: '1.1rem',
               border: 'none',
-              borderRadius: '8px',
+              borderRadius: '12px',
               background: 'white',
               color: '#f5576c',
               cursor: 'pointer',
               fontWeight: 'bold',
-              transition: 'transform 0.2s'
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
             }}
-            onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
-            onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+            onMouseOver={(e) => {
+              e.target.style.transform = 'scale(1.05) translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.3)';
+            }}
+            onMouseOut={(e) => {
+              e.target.style.transform = 'scale(1) translateY(0)';
+              e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+            }}
           >
-            Go to Home
+            🏠 Go to Home
           </button>
+          <style>{`
+            @keyframes shake {
+              0%, 100% { transform: translateX(0); }
+              25% { transform: translateX(-10px); }
+              75% { transform: translateX(10px); }
+            }
+          `}</style>
         </div>
       );
     }
@@ -66,7 +82,7 @@ class ErrorBoundary extends Component {
   }
 }
 
-// Enhanced loading fallback component with spinner
+// Enhanced loading fallback component with spinner and food emoji
 const LoadingFallback = () => (
   <div style={{
     display: 'flex',
@@ -77,20 +93,34 @@ const LoadingFallback = () => (
     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     color: 'white'
   }}>
-    <div style={{
-      width: '50px',
-      height: '50px',
-      border: '5px solid rgba(255, 255, 255, 0.3)',
-      borderTop: '5px solid white',
-      borderRadius: '50%',
-      animation: 'spin 1s linear infinite',
-      marginBottom: '20px'
-    }}></div>
-    <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Loading...</span>
+    <div style={{ position: 'relative', marginBottom: '30px' }}>
+      <div style={{
+        width: '60px',
+        height: '60px',
+        border: '6px solid rgba(255, 255, 255, 0.2)',
+        borderTop: '6px solid white',
+        borderRadius: '50%',
+        animation: 'spin 1s linear infinite'
+      }}></div>
+      <span style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        fontSize: '2rem',
+        animation: 'bounce 1s ease-in-out infinite'
+      }}>🍕</span>
+    </div>
+    <span style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '10px' }}>Loading Deliciousness...</span>
+    <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>Preparing your food experience</span>
     <style>{`
       @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
+      }
+      @keyframes bounce {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.2); }
       }
     `}</style>
   </div>
