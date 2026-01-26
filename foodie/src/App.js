@@ -112,7 +112,7 @@ const LoadingFallback = () => (
       }}>🍕</span>
     </div>
     <span style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '10px' }}>Loading Deliciousness...</span>
-    <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>Preparing your food experience</span>
+    <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>Preparing your amazing food experience ✨</span>
     <style>{`
       @keyframes spin {
         0% { transform: rotate(0deg); }
