@@ -19,14 +19,14 @@ export default function Card({ image, title, description, price }) {
 
   return (
     <div>
-      <article className="card" role="article" aria-label={`${defaultTitle} menu item`} style={{
+      <article className="card" role="article" aria-label={`${defaultTitle} menu item`} tabIndex="0" style={{
         width: "18rem",
         background: 'linear-gradient(145deg, #1f1f3a 0%, #16162b 100%)',
         border: '1px solid rgba(102, 126, 234, 0.3)',
         borderRadius: '20px',
         overflow: 'hidden',
         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(102, 126, 234, 0.2)',
-        transition: 'transform 0.4s ease, box-shadow 0.4s ease',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         cursor: 'pointer'
       }}
       onMouseEnter={(e) => {
